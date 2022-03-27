@@ -25,5 +25,15 @@ public class IndianCensusAnalyserTest {
             Assertions.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM, e.type);
         }
     }
+    
+    @Test
+    public void givenIndianCensusData_WithWrongTYPE_ShouldThrowException() {
+        try {
+            IndianStatesCensusAnalyser censusAnalyser = new IndianStatesCensusAnalyser();
+            int numOfRecords = censusAnalyser.loadIndiaCensusData(WRONG_CSV_FILE_TYPE);
+        } catch (CensusAnalyserException e) {
+            Assertions.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_TYPE_PROBLEM, e.type);
+        }
+    }
 
 }
